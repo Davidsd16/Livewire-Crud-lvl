@@ -19,7 +19,7 @@
             @forelse($tasks as $task)
                 <tr class="border-b border-gray-200">
                     <td class="px-4 py-2"><input type="checkbox"></td>
-                    <td class="px-4 py-2">{{  $task->test }}</td>
+                    <td class="px-4 py-2">{{  $task->text }}</td>
                     <td class="px-4 py-2">
                         <button type="button" class="bg-indigo-400 px-2 py-1 text-white text-xs rounded">Editar</button>
                         <button type="button" class="bg-red-500 px-2 py-1 text-white text-xs rounded">Eliminar</button>
