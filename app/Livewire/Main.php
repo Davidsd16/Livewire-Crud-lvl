@@ -7,7 +7,7 @@ use Livewire\Component;
 class Main extends Component
 {
 
-    public $welcome = '!Bienvenido!  estas son tus tareas :)';
+    public $welcome = '!Bienvenido! comenzamos con las nuevas tareas :)';
 
     public function render()
     {
