@@ -8,24 +8,26 @@ use Livewire\Component;
 class Task extends Component
 {
     public $tasks;
-    public ModelsTask $createTask;
+    public ModelsTask $task;
 
-    protected $rules = ['createTask.text' => 'required|max:40'];
+    protected $rules = ['task.text' => 'required|max:40'];
 
     public function mount()
     {
         $this->tasks = ModelsTask::get();
-        $this->createTask = new ModelsTask();
+        $this->task = new ModelsTask();
     }
 
     public function save()
     {
         $this->validate();
-        $this->createTask->save();
+        $task = new ModelsTask(['text' => $this->task['text']]);
+        $task->save();
         $this->mount();
-
+    
         session()->flash('message', 'Tarea guardada correctamente!');
     }
+    
 
     public function render()
     {
