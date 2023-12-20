@@ -20,13 +20,19 @@ class Task extends Component
 
     public function updatedTask()
     {
-        dd($this->task['text']); // Verifica el valor actualizado
+        dd($this->task['text']);
     }
 
     public function save()
     {
         $this->validate();
-        
+
+        $errors = $this->getErrorBag();
+
+        if ($errors->any()) {
+            dd($errors->all());
+        }
+    
         if (!empty($this->task['text'])) {
             $task = new ModelsTask(['text' => $this->task['text']]);
             $task->save();
