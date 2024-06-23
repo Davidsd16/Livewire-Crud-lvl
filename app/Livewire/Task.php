@@ -14,8 +14,11 @@ class Task extends Component
 
     public function mount()
     {
-        $this->task = new ModelsTask(['text' => '']); // Initialize with an empty text
+        $this->task = new ModelsTask(['task.text' => '']); // Initialize with an empty text
         $this->tasks = ModelsTask::get();
+        var_dump('task');
+       // var_dump($task);
+       // die('mount');
     }
     
 
@@ -26,13 +29,17 @@ class Task extends Component
 
     public function save()
     {
+        var_dump('save');
         $this->validate([
             'task.text' => 'required|max:40',
         ]);
 
 
-        if (!empty($this->task->text)) {
+        if (empty($this->task->text)) {
             $task = new ModelsTask(['text' => $this->task->text]);
+            var_dump('task');
+            var_dump($task);
+            die('//////////');
             $task->save();
 
             session()->flash('message', 'Tarea guardada correctamente!');
@@ -40,6 +47,8 @@ class Task extends Component
         } else {
             session()->flash('error', 'El campo de texto no puede estar vacío.');
         }
+        var_dump('task');
+        die('//////////');
     }
 
     public function render()
