@@ -28,6 +28,8 @@ class LivewireTask extends Component
 
     public function save()
     {
+        dd($this->task);
+        
         $this->validate();
 
         $this->task->save();
