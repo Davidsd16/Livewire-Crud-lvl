@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    use HasFactory;
+    protected $fillable = ['text']; // Asegúrate de tener los campos que deseas llenar
 
-    protected $fillable = ['text', 'done'];
+    // No necesitas el método mount() aquí, ya que es para componentes Livewire
 }
