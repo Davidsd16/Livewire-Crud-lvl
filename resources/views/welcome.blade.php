@@ -12,7 +12,6 @@
 </head>
 <body>
     <livewire:MainComponent />
-    <livewire:livewire-task />
     @livewireScripts
 </body>
 </html>
