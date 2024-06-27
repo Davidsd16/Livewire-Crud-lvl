@@ -2,25 +2,28 @@
 
 namespace App\Livewire;
 
-use App\Models\Task;
 use Livewire\Component;
+use App\Models\Task;
 
 class LivewireTask extends Component
 {
     public $tasks;
-    public Task $task;
+    public $task;
 
-    protected $rules = ['task.text' => 'required|max:40'];
+    // Definir las reglas de validación
+    protected $rules = [
+        'task.text' => 'required|max:255', // Ajusta según tus necesidades
+    ];
 
     public function mount()
     {
-        $this->task = new Task(['text' => '']); // Inicializa con un texto vacío
-        $this->tasks = Task::all(); // Obtén todas las tareas
+        $this->tasks = Task::all();
+        $this->task = new Task();
     }
 
-    public function updatedTask()
+    public function updateTaskText($value)
     {
-        // Puedes implementar lógica adicional aquí si es necesario
+        $this->task['text'] = $value;
     }
 
     public function save()
@@ -28,10 +31,11 @@ class LivewireTask extends Component
         $this->validate();
 
         $this->task->save();
-        
+
         session()->flash('message', '¡Tarea guardada correctamente!');
 
-        $this->tasks = Task::all(); // Actualiza la lista de tareas después de guardar
+        $this->task = new Task();
+        $this->tasks = Task::all();
     }
 
     public function render()
